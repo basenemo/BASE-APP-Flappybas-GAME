@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Play, RotateCcw, Trophy, Star, Calendar, Gift, Target, Users, Medal, Share2, UserPlus } from "lucide-react"
+import { sdk } from "@farcaster/miniapp-sdk"
 
 interface Bird {
   x: number
@@ -734,6 +735,22 @@ export default function FlappyBirdGame() {
 
     initializeWeeklyTasks()
     checkReferralCode()
+  }, [])
+
+  // Base mini app initialization
+  useEffect(() => {
+    const initializeMiniApp = async () => {
+      try {
+        // Call ready() to hide loading splash and display the app
+        await sdk.actions.ready()
+        console.log("[v0] Base mini app initialized successfully")
+      } catch (error) {
+        console.log("[v0] Base mini app initialization failed:", error)
+        // App will still work without Base integration
+      }
+    }
+
+    initializeMiniApp()
   }, [])
 
   return (
