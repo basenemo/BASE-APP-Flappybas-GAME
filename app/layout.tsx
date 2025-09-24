@@ -8,18 +8,34 @@ import "./globals.css"
 
 export const metadata: Metadata = {
   title: "Flappy Base Game",
-  description: "A fun Flappy Bird style game",
+  description: "A fun Flappy Bird style game with XP progression, daily challenges, and social features",
   generator: "v0.app",
   openGraph: {
     title: "Flappy Base Game",
-    description: "A fun Flappy Bird style game",
+    description: "A fun Flappy Bird style game with XP progression, daily challenges, and social features",
     images: ["/og-image.jpg"],
   },
   twitter: {
     card: "summary_large_image",
     title: "Flappy Base Game",
-    description: "A fun Flappy Bird style game",
+    description: "A fun Flappy Bird style game with XP progression, daily challenges, and social features",
     images: ["/og-image.jpg"],
+  },
+  other: {
+    "fc:miniapp": JSON.stringify({
+      version: "next",
+      imageUrl: `${process.env.NEXT_PUBLIC_URL || "https://flappy-bird-base.vercel.app"}/hero-image.jpg`,
+      button: {
+        title: "Play Flappy Bird",
+        action: {
+          type: "launch_miniapp",
+          name: "Flappy Bird XP",
+          url: process.env.NEXT_PUBLIC_URL || "https://flappy-bird-base.vercel.app",
+          splashImageUrl: `${process.env.NEXT_PUBLIC_URL || "https://flappy-bird-base.vercel.app"}/flappy-bird-splash.jpg`,
+          splashBackgroundColor: "#87CEEB",
+        },
+      },
+    }),
   },
 }
 
